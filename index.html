@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Contacts list</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div id="content">
+
+    </div>
+    <script type="text/babel">
+    var CONTACTS =
+  [
+    {
+    "general": {
+      "firstName": "Liana",
+      "lastName": "Crooks",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/kevinoh/128.jpg"
+    },
+    "job": {
+      "company": "Ledner, Johnson and Predovic",
+      "title": "Investor Functionality Coordinator"
+    },
+    "contact": {
+      "email": "Gerry_Hackett77@gmail.com",
+      "phone": "(895) 984-0132"
+    },
+    "address": {
+      "street": "1520 Zemlak Cove",
+      "city": "New Devon",
+      "zipCode": "42586-7898",
+      "country": "Guinea-Bissau"
+    }
+  },
+  {
+    "general": {
+      "firstName": "Deontae",
+      "lastName": "Dare",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/andysolomon/128.jpg"
+    },
+    "job": {
+      "company": "D'Amore, Dicki and Borer",
+      "title": "International Applications Consultant"
+    },
+    "contact": {
+      "email": "Kellie.Marvin38@yahoo.com",
+      "phone": "1-615-843-3426 x600"
+    },
+    "address": {
+      "street": "65901 Glover Terrace",
+      "city": "Alden ton",
+      "zipCode": "57744-4248",
+      "country": "Kenya"
+    }
+  },
+  {
+    "general": {
+      "firstName": "Cortez",
+      "lastName": "Pacocha",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/holdenweb/128.jpg"
+    },
+    "job": {
+      "company": "McKenzie Group",
+      "title": "Forward Branding Developer"
+    },
+    "contact": {
+      "email": "Sage_Wiegand@hotmail.com",
+      "phone": "725.583.0926 x0430"
+    },
+    "address": {
+      "street": "376 Reginald Dam",
+      "city": "Port Enid fort",
+      "zipCode": "51294-8361",
+      "country": "Belarus"
+    }
+  }
+  ];
+
+  var Contact = React.createClass({
+    render : function () {
+      return (
+        <li>
+        <div className = "detailsUser">
+          <img className="contact-image" src={this.props.image} width="128px" height="128px" />
+          <div className = "titleUser">
+            <div className="nameUser">{this.props.name}</div>
+            <div className ="companyUser">{this.props.companyName}</div>
+            <div>{this.props.companyTitle}</div>
+            <div>Email : {this.props.contactEmail}</div>
+            <div>Phone : {this.props.contactPhone}</div>
+            <div>Street : {this.props.addressStreet}</div>
+            <div>City : {this.props.addressCity}</div>
+            <div>zipCode : {this.props.addressZipCode}</div>
+            <div>Country : {this.props.addressCountry}</div>
+          </div>
+          </div>
+        </li>
+      )
+    }
+  });
+
+  var ContactList = React.createClass({
+    render : function () {
+      return (
+        <div>
+          <ul>
+            {
+              CONTACTS.map(function (el) {
+                return <Contact
+                    key={el.address.zipCode}
+                    name={el.general.firstName + ' ' + el.general.lastName}
+                    companyName = {'Company : ' + el.job.company}
+                    companyTitle = {'Company Title : ' + el.job.title}
+                    contactEmail =  {el.contact.email}
+                    contactPhone = {el.contact.phone}
+                    addressStreet = {el.address.street}
+                    addressCity = {el.address.city}
+                    addressZipCode = {el.address.zipCode}
+                    addressCountry = {el.address.country}
+                    image={el.general.avatar}
+                />;
+              })
+            }
+          </ul>
+        </div>
+      )
+    }
+  })
+
+  ReactDOM.render(
+    <ContactList />,
+    document.getElementById('content')
+  );
+
+
+      </script>
+  </body>
+</html>
