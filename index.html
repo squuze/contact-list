@@ -10,7 +10,8 @@
   </head>
   <body>
     <div id="content">
-
+      <div id="contact-list"></div>
+      <div id="detailsUser"></div>
     </div>
     <script type="text/babel">
     var CONTACTS =
@@ -85,7 +86,7 @@
       return (
         <li>
         <div className = "detailsUser">
-          <img className="contact-image" src={this.props.image} width="128px" height="128px" />
+          <img className="contact-img" src={this.props.image} width="128px" height="128px" />
           <div className = "titleUser">
             <div className="nameUser">{this.props.name}</div>
             <div className ="companyUser">{this.props.companyName}</div>
@@ -112,7 +113,7 @@
               CONTACTS.map(function (el) {
                 return <Contact
                     key={el.address.zipCode}
-                    name={el.general.firstName + ' ' + el.general.lastName}
+                    name={el.general.firstName}
                     companyName = {'Company : ' + el.job.company}
                     companyTitle = {'Company Title : ' + el.job.title}
                     contactEmail =  {el.contact.email}
@@ -129,12 +130,67 @@
         </div>
       )
     }
-  })
+  });
+
+  var ContactInfo = React.createClass({
+      render: function() {
+          return (
+              <li className="contact">
+                  <img className="contact-image" src={this.props.avatar} width="60px" height="60px" />
+                  <div className="contact-info">
+                      <div className="contact-name"> {this.props.firstName} </div>
+                      <div className="contact-number"> {this.props.phone} </div>
+                  </div>
+              </li>
+          );
+      }
+  });
+  var ListContacts = React.createClass({
+      getInitialState: function() {
+          return {
+              displayedContacts: CONTACTS
+          };
+      },
+      handleSearch: function(event) {
+          var searchQuery = event.target.value.toLowerCase();
+          var displayedContacts = CONTACTS.filter(function(el) {
+              var searchValue = el.general.firstName.toLowerCase();
+              return searchValue.indexOf(searchQuery) !== -1;
+          });
+          this.setState({
+              displayedContacts: displayedContacts
+          });
+      },
+      render: function() {
+          return (
+              <div className="contacts">
+                  <input type="text" placeholder="Search..." className="search-field" onChange={this.handleSearch} />
+                  <ul className="contacts-list">
+                      {
+                         this.state.displayedContacts.map(function(el) {
+                              return <ContactInfo
+                                  key={el.contact.email}
+                                  firstName={el.general.firstName}
+                                  phone={el.contact.phone}
+                                  avatar={el.general.avatar}
+                              />;
+                         })
+                      }
+                  </ul>
+              </div>
+          );
+      }
+  });
+  ReactDOM.render(
+      <ListContacts />,
+      document.getElementById("contact-list")
+  );
 
   ReactDOM.render(
     <ContactList />,
-    document.getElementById('content')
+    document.getElementById('detailsUser')
   );
+
 
 
       </script>
