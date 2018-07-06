@@ -1,0 +1,92 @@
+.lastinf{
+  padding-top: 50px;
+  padding-left: 100px;
+  font-size: 20px;
+
+}
+
+.companyUser{
+  padding-left: 30px;
+  font-size: 20px;
+  color: grey;
+}
+
+.jobtitle{
+  padding-left: 45px;
+  font-size: 20px;
+  color: lightgrey;
+}
+
+.titlename{
+  padding-left: 20px;
+  padding-top: 25px;
+}
+
+.nameUser{
+  font-size:  45px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.contact-img{
+  width: 128px;
+  height: 128px;
+  position: relative;
+  border: 3px solid lightgreen;
+  -webkit-box-shadow: 3px 3px 3px #777;
+  -moz-box-shadow: 3px 3px 3px #777;
+  box-shadow: 3px 3px 3px #777;
+
+}
+
+.detailsUser{
+  display: flex;
+  align-items: center;
+  font-family: sans-serif;
+  padding-left: 100px;
+}
+
+.page{
+  display: flex;
+}
+
+.content{
+  display: flex;
+}
+
+.search-field{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.contacts{
+  width: 300px;
+}
+
+.contacts-list{
+  padding: 10px;
+  width: 100%;
+}
+
+.contact {
+  display: flex;
+  font-family: sans-serif;
+  width: 100%;
+  border-bottom: 1px dotted grey;
+}
+
+.contact-image{
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.contact-name{
+  font-size: 75%;
+  font-weight: bold;
+}
+
+.contact-title{
+  font-size: 15px;
+  color: grey;
+}
